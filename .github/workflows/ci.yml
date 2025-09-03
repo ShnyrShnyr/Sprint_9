@@ -1,0 +1,26 @@
+# Файл ci.yml
+# Имя workflow
+name: Selenoid Tests Workflow
+# Перечень событий-триггеров, при которых должен запускаться workflow
+on:
+  # Событие push возникает,
+  # когда изменения исходного кода приходят на сервер GitHub
+  push:
+    # Отслеживаем изменения только в ветке master
+    branches:
+      - master
+      - develop
+# Перечень задач
+jobs:
+  # Переименуем задачу
+  run-selenoid-tests:
+    runs-on: ubuntu-latest
+    steps:
+      # Первый шаг оставим таким же
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Pull selenoid image
+        run: docker pull selenoid/chrome:128.0
+      # Поднимаем контейнеры и выходим при завершении работы контейнера test_docker
+      - name: Run tests in docker
+        run: docker compose up --build --exit-code-from test_docker

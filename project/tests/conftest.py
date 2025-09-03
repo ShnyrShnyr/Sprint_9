@@ -3,11 +3,9 @@ import random
 import string
 
 from selenium import webdriver
-
-from page_object.data import Data
-from page_object.pages.recipes_page import RecipesPage
-from page_object.pages.registration_page import RegistrationPage
-from page_object.pages.sign_in_page import SignInPage
+from project.pages.sign_in_page import SignInPage
+from project.pages.recipes_page import RecipesPage
+from project.pages.registration_page import RegistrationPage
 
 
 @pytest.fixture
@@ -19,19 +17,16 @@ def driver():
 @pytest.fixture
 def registration_page(driver):
     page = RegistrationPage(driver)
-    page.go_to_url(Data.MAIN_PAGE_URL+Data.SIGN_UP_PAGE_URL)
     return page
 
 @pytest.fixture
 def sign_in_page(driver):
     page = SignInPage(driver)
-    page.go_to_url(Data.MAIN_PAGE_URL+Data.SIGN_IN_PAGE_URL)
     return page
 
 @pytest.fixture
 def recipes_page(driver):
     page = RecipesPage(driver)
-    page.go_to_url(Data.MAIN_PAGE_URL+Data.RECIPES_PAGE_URL)
     return page
 
 @pytest.fixture
