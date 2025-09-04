@@ -21,17 +21,17 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     command: [ "-conf", "/etc/selenoid/config.json", "-container-network", "selenoid" ]
 
-
+  # имя сервиса должно совпадать с тем, что вы передаёте в --exit-code-from
   test_docker:
     build: .
-    container_name: test_docker
-    depends_on:
-      - selenoid
+    image: my-tests-image
+    command: pytest --maxfail=1 --disable-warnings -q
+    volumes:
+      - ./:/app
+    working_dir: /app
     networks:
       - selenoid
-    tty: true
-    command: [ "pytest" ]
-
-  networks:
-    selenoid:
-      name: selenoid
+  # здесь могут быть ещё, например, браузерные контейнеры, selenium и т.п.
+networks:
+  selenoid:              # <-- на уровне корня
+    external: true       # или driver: bridge, name: my_custom_network и т.д.
