@@ -23,7 +23,4 @@ jobs:
         run: docker pull selenoid/chrome:128.0
       # Поднимаем контейнеры и выходим при завершении работы контейнера test_docker
       - name: Run tests in docker
-        run: docker compose up \
-          --build \
-          --abort-on-container-exit \
-          --exit-code-from test_docker
+        run: docker compose up --build --abort-on-container-exit --exit-code-from test_docker
