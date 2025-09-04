@@ -1,5 +1,5 @@
 # Файл docker-compose.yml
-version: '3.5'
+
 # Перечень контейнеров
 services:
   # Имя и описание первого контейнера; имя выбирает разработчик. 
@@ -17,39 +17,21 @@ services:
       - selenoid
     # Какой volume подключить для этого контейнера
     volumes:
-      - "/c/etc/selenoid:/etc/selenoid"    #тут должен лежать browsers.json с настройками браузера
+      - "./config.json:/etc/selenoid/config.json"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/c/etc/selenoid/video:/opt/selenoid/video"
-      - "/c/etc/selenoid/logs:/opt/selenoid/logs"
-    environment:
-      - OVERRIDE_VIDEO_OUTPUT_DIR=/c/etc/selenoid/video
-    command: ["-conf", "/etc/selenoid/browsers.json", "-container-network", "selenoid"]
+    command: [ "-conf", "/etc/selenoid/config.json", "-container-network", "selenoid" ]
 
-  # Имя и описание контейнера ui для селеноида
-  selenoid-ui:
-    image: "aerokube/selenoid-ui:latest"
-    container_name: selenoid-ui
-    links:
-      - selenoid
-    ports:
-      - "8081:8080"
-    networks:
-      - selenoid
-    command: ["--selenoid-uri", "http://selenoid:4444"]
 
-  test:
-    image: "test"
-    container_name: test
-    volumes:
-      - ".:/app"
-    # Какие контейнеры нужно запустить до старта этого контейнера:
+  test_docker:
+    build: .
+    container_name: test_docker
     depends_on:
       - selenoid
     networks:
       - selenoid
-    command: ["pytest"]
+    tty: true
+    command: [ "pytest" ]
 
-# Регистрация новой сети:
-networks:
-  selenoid:
-    name: selenoid
+  networks:
+    selenoid:
+      name: selenoid
