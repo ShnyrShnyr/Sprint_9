@@ -31,4 +31,4 @@ jobs:
           path: | 
             reports/allure-results
             reports/allure-report
-        retention-days: 30
+          retention-days: 30
