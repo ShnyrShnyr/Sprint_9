@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9756892e-ca54-44c5-850e-b653bd87dadf" name="Changes" comment="&quot;First Commit&quot;">
-      <change afterPath="$PROJECT_DIR$/.idea/Sprint_9.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/assets/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/helpers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/locators/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/locators/recipes_page_locators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/locators/registration_page_locators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/locators/sign_in_page_locators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/pages/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/pages/recipes_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/pages/registration_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/tests/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/tests/test_recipes_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/tests/test_registration_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page_object/tests/test_sign_in_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/tests/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +35,13 @@
     &quot;accountId&quot;: &quot;d79c57a1-00a0-44cb-8a66-75566c1a9d18&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.venv/lib/python3.11/site-packages/allure_commons/_allure.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/webelement.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -65,23 +53,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python tests.pytest for test_recipes_page.TestRecipesPage.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_recipes_page.TestRecipesPage.test_sign_in_and_create_recipe.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_registration_page.TestRegistrationPage.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_registration_page.TestRegistrationPage.test_check_redirect_to_sign_in.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_registration_page.TestRegistrationPage.test_click_on_create_account.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_sign_in_page.TestSignInPage.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_sign_in_page.TestSignInPage.test_click_on_sign_in.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_sign_in_page.TestSignInPage.test_redirect_to_recipes.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.pytest for test_create_recipe.TestCreateRecipe.executor": "Run",
+    "Python tests.pytest for test_create_recipe.TestCreateRecipe.test_sign_in_and_create_recipe.executor": "Debug",
+    "Python tests.pytest for test_recipes_page.TestRecipesPage.executor": "Run",
+    "Python tests.pytest for test_recipes_page.TestRecipesPage.test_sign_in_and_create_recipe.executor": "Debug",
+    "Python tests.pytest for test_registration.TestRegistration.executor": "Run",
+    "Python tests.pytest for test_registration.TestRegistration.test_registration.executor": "Run",
+    "Python tests.pytest for test_registration_page.TestRegistrationPage.executor": "Run",
+    "Python tests.pytest for test_registration_page.TestRegistrationPage.test_check_redirect_to_sign_in.executor": "Run",
+    "Python tests.pytest for test_registration_page.TestRegistrationPage.test_click_on_create_account.executor": "Run",
+    "Python tests.pytest for test_sign_in.TestSignIn.executor": "Run",
+    "Python tests.pytest for test_sign_in_page.TestSignInPage.executor": "Run",
+    "Python tests.pytest for test_sign_in_page.TestSignInPage.test_authorization.executor": "Run",
+    "Python tests.pytest for test_sign_in_page.TestSignInPage.test_click_on_sign_in.executor": "Run",
+    "Python tests.pytest for test_sign_in_page.TestSignInPage.test_redirect_to_recipes.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "#1 on develop",
+    "last_opened_file_path": "/Users/andreyshnyrin/PycharmProjects/Sprint_9",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/page_object/tests" />
@@ -218,6 +213,9 @@
     </task>
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="Dockerfile" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -233,29 +231,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/page_object/pages/registration_page.py</url>
+          <url>file://$PROJECT_DIR$/project/pages/registration_page.py</url>
           <line>25</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/page_object/pages/registration_page.py</url>
+          <url>file://$PROJECT_DIR$/project/pages/registration_page.py</url>
           <line>37</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/page_object/tests/test_registration_page.py</url>
+          <url>file://$PROJECT_DIR$/project/tests/test_registration.py</url>
           <line>19</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/page_object/pages/recipes_page.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/page_object/tests/test_recipes_page.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/project/pages/recipes_page.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

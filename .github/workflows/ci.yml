@@ -2,14 +2,7 @@
 # Имя workflow
 name: Selenoid Tests Workflow
 # Перечень событий-триггеров, при которых должен запускаться workflow
-on:
-  # Событие push возникает,
-  # когда изменения исходного кода приходят на сервер GitHub
-  push:
-    # Отслеживаем изменения только в ветке master
-    branches:
-      - master
-      - develop
+on: [push, pull_request]
 # Перечень задач
 jobs:
   # Переименуем задачу
@@ -27,4 +20,4 @@ jobs:
           docker network create selenoid || true
       # Поднимаем контейнеры и выходим при завершении работы контейнера test_docker
       - name: Run tests in docker
-        run: docker compose up --build --abort-on-container-exit --exit-code-from test_docker
+        run: docker compose run test_docker

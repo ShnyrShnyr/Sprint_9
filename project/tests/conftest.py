@@ -3,6 +3,8 @@ import random
 import string
 
 from selenium import webdriver
+from selenium.webdriver.remote import server
+
 from project.pages.sign_in_page import SignInPage
 from project.pages.recipes_page import RecipesPage
 from project.pages.registration_page import RegistrationPage
@@ -10,8 +12,19 @@ from project.pages.registration_page import RegistrationPage
 
 @pytest.fixture
 def driver():
-    drv = webdriver.Chrome()
-    yield drv
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.set_capability("browserName", "chrome")
+    chrome_options.set_capability("browserVersion", "128.0")
+    chrome_options.set_capability("selenoid:options", {
+        "enableVNC": False,
+        "enableVideo": False
+    })
+    drv = webdriver.Remote(
+        command_executor='http://localhost:4444/wd/hub',
+        options=chrome_options
+
+    )
+
     drv.quit()
 
 @pytest.fixture
