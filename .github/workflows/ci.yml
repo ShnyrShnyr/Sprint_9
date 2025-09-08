@@ -29,6 +29,5 @@ jobs:
         with:
           name: allure-complete-report
           path: | 
-            allure-results
-            allure-report
+            reports/allure-results
           retention-days: 30

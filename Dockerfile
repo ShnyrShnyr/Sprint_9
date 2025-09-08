@@ -23,4 +23,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # При старте контейнера запустить сервер разработки.
-CMD ["pytest", "--alluredir", "app/allure-results"]
+CMD ["pytest", "--alluredir", "app/reports/allure-results"]
