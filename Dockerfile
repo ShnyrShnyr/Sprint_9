@@ -21,6 +21,3 @@ RUN pip install -r requirements.txt
 # той директории локального компьютера, где сохранён Dockerfile,
 # в текущую рабочую директорию образа — /app.
 COPY . .
-
-# При старте контейнера запустить сервер разработки.
-CMD ["pytest", "--alluredir", "app/reports/allure-results"]

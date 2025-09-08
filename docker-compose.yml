@@ -37,7 +37,7 @@ services:
   test_docker:
     build: .
     image: my-tests-image
-    command: pytest --maxfail=1 --disable-warnings -q
+    command: pytest --alluredir=/app/reports/allure-results
     volumes:
       - ./reports:/app/reports
 
