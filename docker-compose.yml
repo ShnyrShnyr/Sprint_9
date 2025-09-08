@@ -21,6 +21,18 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     command: [ "-conf", "/etc/selenoid/config.json", "-container-network", "selenoid" ]
 
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest
+    networks:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: [ "--selenoid-uri", "http://selenoid:4444",
+               "--webdriver-uri", "http://selenoid:4444"
+    ]
+    depends_on:
+      - selenoid
+
   # имя сервиса должно совпадать с тем, что вы передаёте в --exit-code-from
   test_docker:
     build: .
@@ -31,6 +43,9 @@ services:
     working_dir: /app
     networks:
       - selenoid
+    depends_on:
+      - selenoid
+      - selenoid-ui
   # здесь могут быть ещё, например, браузерные контейнеры, selenium и т.п.
 networks:
   selenoid:              # <-- на уровне корня
