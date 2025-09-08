@@ -11,18 +11,20 @@ jobs:
     steps:
       # Первый шаг оставим таким же
       - name: Check out repository code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: Pull selenoid image
         run: docker pull selenoid/chrome:128.0
       - name: Create external network
         run: |
           # если сеть уже есть — ничего не случится
           docker network create selenoid || true
+
       # Поднимаем контейнеры и выходим при завершении работы контейнера test_docker
       - name: Run tests in docker
         run: docker compose run test_docker
+
       - name: Upload complete report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: allure-complete-report
