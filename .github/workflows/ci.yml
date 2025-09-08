@@ -2,7 +2,7 @@
 # Имя workflow
 name: Selenoid Tests Workflow
 # Перечень событий-триггеров, при которых должен запускаться workflow
-on: [push, pull_request]
+on: push
 # Перечень задач
 jobs:
   # Переименуем задачу
@@ -24,10 +24,9 @@ jobs:
         run: docker compose run test_docker
 
       - name: Upload complete report
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: allure-complete-report
-          path: | 
-            reports/allure-results
+          path: reports/allure-results
           retention-days: 30
