@@ -23,7 +23,7 @@ def driver():
         command_executor='http://selenoid:4444/wd/hub',
         options=chrome_options
     )
-
+    yield drv
     drv.quit()
 
 @pytest.fixture
