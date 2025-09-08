@@ -1,10 +1,7 @@
 import pytest
 import random
 import string
-
 from selenium import webdriver
-from selenium.webdriver.remote import server
-
 from project.pages.sign_in_page import SignInPage
 from project.pages.recipes_page import RecipesPage
 from project.pages.registration_page import RegistrationPage
