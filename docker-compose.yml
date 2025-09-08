@@ -39,7 +39,8 @@ services:
     image: my-tests-image
     command: pytest --maxfail=1 --disable-warnings -q
     volumes:
-      - ./:/app
+      - ./reports:/app/reports
+
     working_dir: /app
     networks:
       - selenoid
