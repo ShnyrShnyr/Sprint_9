@@ -27,9 +27,7 @@ services:
       - selenoid
     ports:
       - "8080:8080"
-    command: [ "--selenoid-uri", "http://selenoid:4444",
-               "--webdriver-uri", "http://selenoid:4444"
-    ]
+    command: pytest tests/ --remote --selenoid-url http://selenoid:4444
     depends_on:
       - selenoid
 
