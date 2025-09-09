@@ -1,7 +1,6 @@
 import allure
-from selenium.webdriver.common.by import By
-
 from project.data import Data
+from selenium.webdriver.common.by import By
 from project.pages.base_page import BasePage
 
 class RegistrationPage(BasePage):
@@ -14,7 +13,6 @@ class RegistrationPage(BasePage):
     CREATE_ACCOUNT_BUTTON = By.XPATH, '//button[contains(@class,"1FFWl")]'
     REGISTRATION_HEADER = By.XPATH, '//h1[text()="Регистрация"]'
     SIGN_IN_BUTTON = By.XPATH, '//a[@href="/signin"]'
-
 
     @allure.step("Нажать на войти на странице регистрации")
     def click_on_sign_in(self):
@@ -43,6 +41,3 @@ class RegistrationPage(BasePage):
     def check_redirect_to_sign_in(self):
         self.waiting_to_invisible_element(self.REGISTRATION_HEADER)
         return True
-
-
-

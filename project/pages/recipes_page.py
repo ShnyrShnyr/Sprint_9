@@ -1,8 +1,6 @@
-import os
 from pathlib import Path
-
-from selenium.webdriver.common.by import By
 from project.data import Data
+from selenium.webdriver.common.by import By
 from project.pages.base_page import BasePage
 
 
@@ -48,13 +46,13 @@ class RecipesPage(BasePage):
         input_file.send_keys(str(file_path.resolve()))
         self.click_on_element(self.CREATE_RECIPE_BUTTON_DOWN)
         condition = True
-        while condition == True:
+        while condition:
             condition = self.check_element_visible(self.COOKING_TIME_OF_RECIPE)
-            if condition == False:
+            if not condition:
                 print('Не отображается время приготовления')
                 break
             condition = self.check_element_visible(self.INGREDIENTS_OF_RECIPE)
-            if condition == False:
+            if not condition:
                 print('Не отображаются ингредиенты рецепта')
                 break
             condition = self.check_element_visible(self.DESCRIPTION_OF_RECIPE)
@@ -67,5 +65,3 @@ class RecipesPage(BasePage):
         self.check_element_visible(self.FAVORITES)
         self.check_element_visible(self.CREATE_RECIPE_BUTTON)
         return True
-
-

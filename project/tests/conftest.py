@@ -5,23 +5,44 @@ from selenium import webdriver
 from project.pages.sign_in_page import SignInPage
 from project.pages.recipes_page import RecipesPage
 from project.pages.registration_page import RegistrationPage
+import os
 
 
-@pytest.fixture
-def driver():
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.set_capability("browserName", "chrome")
-    chrome_options.set_capability("browserVersion", "128.0")
-    chrome_options.set_capability("selenoid:options", {
-        "enableVNC": False,
-        "enableVideo": False
-    })
-    drv = webdriver.Remote(
-        command_executor='http://selenoid:4444/wd/hub',
-        options=chrome_options
+def pytest_addoption(parser):
+    parser.addoption(
+        "--remote", action="store_true", default=False,
+        help="Запускать в удалённом Selenoid (если не передан — локально)."
     )
-    yield drv
-    drv.quit()
+    parser.addoption(
+        "--selenoid-url", action="store", default="http://localhost:4444/wd/hub",
+        help="URL удалённого Selenium (Selenoid)."
+    )
+
+@pytest.fixture(scope="function")
+def driver(request):
+    chrome_options = webdriver.ChromeOptions()
+
+    if request.config.getoption("--remote"):
+        # --- РЕЖИМ Selenoid ---
+        chrome_options.set_capability("browserName", "chrome")
+        chrome_options.set_capability("browserVersion", "latest")
+        chrome_options.set_capability("selenoid:options", {
+            "enableVNC": False,
+            "enableVideo": False,
+        })
+        driver = webdriver.Remote(
+            command_executor=request.config.getoption("--selenoid-url"),
+            options=chrome_options
+        )
+    else:
+        # --- ЛОКАЛЬНЫЙ РЕЖИМ ---
+        # можно добавить любые аргументы, например:
+        chrome_options.add_argument("--start-maximized")
+        driver = webdriver.Chrome(options=chrome_options)
+
+    yield driver
+    driver.quit()
+
 
 @pytest.fixture
 def registration_page(driver):
