@@ -27,7 +27,9 @@ services:
       - selenoid
     ports:
       - "8080:8080"
-    command: pytest tests/ --remote --selenoid-url http://selenoid:4444
+    command: [ "--selenoid-uri", "http://selenoid:4444",
+             "--webdriver-uri", "http://selenoid:4444"
+             ]
     depends_on:
       - selenoid
 
@@ -35,7 +37,7 @@ services:
   test_docker:
     build: .
     image: my-tests-image
-    command: pytest --alluredir=/app/reports/allure-results
+    command: pytest tests/ --remote --selenoid-url http://selenoid:4444
     volumes:
       - ./reports:/app/reports
 
