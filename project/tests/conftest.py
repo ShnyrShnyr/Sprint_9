@@ -22,7 +22,7 @@ def pytest_addoption(parser):
 def driver(request):
     chrome_options = webdriver.ChromeOptions()
 
-    if request.config.getoption("--remote"):
+    if os.getenv('CI') == True:
         # --- РЕЖИМ Selenoid ---
         chrome_options.set_capability("browserName", "chrome")
         chrome_options.set_capability("browserVersion", "latest")

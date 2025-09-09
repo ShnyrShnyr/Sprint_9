@@ -37,7 +37,7 @@ services:
   test_docker:
     build: .
     image: my-tests-image
-    command: pytest tests/ --remote --selenoid-url http://selenoid:4444
+    command: pytest tests
     volumes:
       - ./reports:/app/reports
 
