@@ -1,3 +1,5 @@
+.DS_Store
+.idea
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -11,7 +13,7 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-downloads/
+downloads/1
 eggs/
 .eggs/
 lib/

@@ -1,0 +1,32 @@
+# Файл ci.yml
+# Имя workflow
+name: Selenoid Tests Workflow
+# Перечень событий-триггеров, при которых должен запускаться workflow
+on: push
+# Перечень задач
+jobs:
+  # Переименуем задачу
+  run-selenoid-tests:
+    runs-on: ubuntu-latest
+    steps:
+      # Первый шаг оставим таким же
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Pull selenoid image
+        run: docker pull selenoid/chrome:128.0
+      - name: Create external network
+        run: |
+          # если сеть уже есть — ничего не случится
+          docker network create selenoid || true
+
+      # Поднимаем контейнеры и выходим при завершении работы контейнера test_docker
+      - name: Run tests in docker
+        run: docker compose run test_docker
+
+      - name: Upload complete report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-complete-report
+          path: reports/allure-results
+          retention-days: 30

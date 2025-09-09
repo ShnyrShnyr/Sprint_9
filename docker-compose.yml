@@ -1,0 +1,55 @@
+# Файл docker-compose.yml
+
+# Перечень контейнеров
+services:
+  # Имя и описание первого контейнера; имя выбирает разработчик. 
+  # Это контейнер селеноида
+  selenoid:
+    # Из какого образа запустить контейнер:
+    image: "aerokube/selenoid"
+    # Как назвать контейнер:
+    container_name: selenoid
+    # Порты для работы:
+    ports:
+      - "4444:4444"
+    # Настройка сети для взаимодействия контейнеров
+    networks:
+      - selenoid
+    # Какой volume подключить для этого контейнера
+    volumes:
+      - "./config.json:/etc/selenoid/config.json"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: [ "-conf", "/etc/selenoid/config.json", "-container-network", "selenoid" ]
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest
+    networks:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: [ "--selenoid-uri", "http://selenoid:4444",
+             "--webdriver-uri", "http://selenoid:4444"
+             ]
+    depends_on:
+      - selenoid
+
+  # имя сервиса должно совпадать с тем, что вы передаёте в --exit-code-from
+  test_docker:
+    build: .
+    image: my-tests-image
+    environment:
+      - CI=True
+    command: pytest --alluredir=/app/reports/allure-results
+    volumes:
+      - ./reports:/app/reports
+
+    working_dir: /app
+    networks:
+      - selenoid
+    depends_on:
+      - selenoid
+      - selenoid-ui
+  # здесь могут быть ещё, например, браузерные контейнеры, selenium и т.п.
+networks:
+  selenoid:              # <-- на уровне корня
+    external: true       # или driver: bridge, name: my_custom_network и т.д.
