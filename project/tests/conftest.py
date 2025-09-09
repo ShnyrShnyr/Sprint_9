@@ -31,7 +31,6 @@ def driver(request):
             "enableVideo": False,
         })
         driver = webdriver.Remote(
-            command_executor=request.config.getoption("--selenoid-url"),
             options=chrome_options
         )
     else:
