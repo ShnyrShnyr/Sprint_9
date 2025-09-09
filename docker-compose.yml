@@ -37,7 +37,9 @@ services:
   test_docker:
     build: .
     image: my-tests-image
-    command: pytest tests
+    environment:
+      - CI=True
+    command: pytest --alluredir=/app/reports/allure-results
     volumes:
       - ./reports:/app/reports
 

@@ -8,7 +8,7 @@ from project.pages.registration_page import RegistrationPage
 import os
 
 
-def pytest_addoption(parser):
+'''def pytest_addoption(parser):
     parser.addoption(
         "--remote", action="store_true", default=False,
         help="Запускать в удалённом Selenoid (если не передан — локально)."
@@ -16,13 +16,13 @@ def pytest_addoption(parser):
     parser.addoption(
         "--selenoid-url", action="store", default="http://localhost:4444/wd/hub",
         help="URL удалённого Selenium (Selenoid)."
-    )
+    )'''
 
 @pytest.fixture(scope="function")
 def driver(request):
     chrome_options = webdriver.ChromeOptions()
 
-    if os.getenv('CI') == True:
+    if os.getenv('CI'):
         # --- РЕЖИМ Selenoid ---
         chrome_options.set_capability("browserName", "chrome")
         chrome_options.set_capability("browserVersion", "latest")
