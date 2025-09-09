@@ -25,7 +25,7 @@ def driver(request):
     if os.getenv('CI'):
         # --- РЕЖИМ Selenoid ---
         chrome_options.set_capability("browserName", "chrome")
-        chrome_options.set_capability("browserVersion", "latest")
+        chrome_options.set_capability("browserVersion", "128.0")
         chrome_options.set_capability("selenoid:options", {
             "enableVNC": False,
             "enableVideo": False,
